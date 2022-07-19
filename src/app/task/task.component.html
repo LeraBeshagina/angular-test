@@ -1,0 +1,133 @@
+
+<div class = "sorted">
+  <div class="sortBox1">
+    <div class = "selectPriority">
+      <i>Сортировка по приоритету:</i>
+      <select class="filterPriorityAndDate" [(ngModel)]="priority">
+        <option value="Все">Приоритет</option>
+        <option value="Низкий">Сначала низкий</option>
+        <option value="Высокий">Сначала высокий</option>
+      </select>
+    </div>
+
+    <div class = "selectDate">
+      <i>Сортировка по дате: </i>
+      <select class="filterPriorityAndDate" [(ngModel)]="date" >
+        <option value="Все" >Сортировка</option>
+        <option value="Недавние">Недавние</option>
+        <option value="Старые">Старые</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filter">
+
+    <div class="sortBox2">
+      <div class = "checkbox">
+        <i>Фильтр по приоритету:</i>
+        <div>
+          <input type="checkbox" [checked]="choicePrior2? false: ''"
+                 [checked]="choicePrior3? false: ''"
+                 [checked]="choicePrior4? false: ''"
+                 [checked]="(choicePrior2 && choicePrior3 && choicePrior4)? true: ''"
+                 [checked]="(!choicePrior2 && !choicePrior3 && !choicePrior4)? true: ''"
+                 [(ngModel)]="choicePrior1" class="checkboxVal"  id ="Choice1" name = "sort" value="Все">
+          <i for = "Choice1">Все</i>
+        </div>
+        <div>
+          <input type="checkbox" [(ngModel)]="choicePrior2"
+                 [checked]="(choicePrior2 && choicePrior3 && choicePrior4)? false: ''"
+                 class="checkboxVal"  id ="Choice2"   name = "sort" value="Низкий">
+          <i for = "Choice2">Низкий</i>
+        </div>
+        <div>
+          <input type="checkbox" class="checkboxVal" [(ngModel)]="choicePrior3"
+                 [checked]="(choicePrior2 && choicePrior3 && choicePrior4)? false: ''"
+                 id ="Choice3"  name = "sort" value="Средний">
+          <i for = "Choice3">Средний</i>
+        </div>
+        <div>
+          <input type="checkbox" class="checkboxVal" [(ngModel)]="choicePrior4"
+                 [checked]="(choicePrior2 && choicePrior3 && choicePrior4)? false: ''"
+                 id ="Choice4" name = "sort" value="Высокий">
+          <i for = "Choice4">Высокий</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter2">
+
+    <div class="sortBox2">
+      <div class = "checkbox">
+        <i>Фильтр по статусу:</i>
+        <div>
+          <input type="checkbox"  class="checkboxVal" [(ngModel)]="choiceActive"
+                 [checked]="choiceActive && choiceCompleted && choiceCancelled? false: true"
+                 id ="C1" name = "sort" value="Active">
+          <i for = "Choice1">Активные</i>
+        </div>
+        <div>
+          <input type="checkbox"  class="checkboxVal" [(ngModel)]="choiceCancelled"
+                 [checked]="choiceActive && choiceCompleted && choiceCancelled? false: true"
+                 id ="C2"   name = "sort" value="Cancelled">
+          <i for = "Choice2">Отмененные</i>
+        </div>
+        <div>
+          <input type="checkbox" class="checkboxVal" [(ngModel)]="choiceCompleted"
+                 [checked]="choiceActive && choiceCompleted && choiceCancelled? false: true"
+                 id ="C3"  name = "sort" value="Completed">
+          <i for = "Choice3">Завершенные</i>
+        </div>
+        <div>
+          <input type="checkbox" class="checkboxVal" [(ngModel)]="choiceAll"
+                 [checked]="choiceActive && choiceCompleted && choiceCancelled? true: false"
+                 [checked]="!choiceActive && !choiceCompleted && !choiceCancelled? true: false"
+                 [checked]="choiceActive? false: true"
+                 [checked]="choiceCompleted? false: true"
+                 [checked]="choiceCancelled? false: true"
+                 id ="C4"  name = "sort" value="All">
+          <i for = "Choice3">Все</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="search">
+    <input type="text" name="inputSearch"
+           [(ngModel)]="searchString"
+           class = "inputSearch" placeholder="Поиск по заметкам...">
+  </div>
+</div>
+
+
+
+<div>
+<div class="task" [class.done]="todo.completed == 'done'"
+     [class.false]="todo.completed =='false'"
+     *ngFor="let todo of todoService.todos | taskFilter : searchString | sortedDate: date
+     | sortedPriority: priority | filterPriority: choicePrior1 : choicePrior2 : choicePrior3  : choicePrior4
+     | filterActive: choiceActive: choiceCancelled: choiceCompleted: choiceAll
+     let i=index">
+  <div class="taskInformation" >
+      <p class = "item"><input type="text"
+                               [class.done]="todo.completed == 'done'"
+                               [class.false]="todo.completed =='false'"
+                               class="inputTask" value = "{{todo.name}}"
+                               (blur)="saveChanges($event, todo)"></p>
+      <p class = "priority-date">Приоритет: {{todo.priority}}</p>
+      <p class = "priority-date">{{todo.date | date: "medium"}}</p>
+
+  </div>
+  <div class="taskButtons">
+    <button class = "done-button" [class.done]="todo.completed == 'done'"
+            [class.false]="todo.completed =='false'"
+            type ="submit"><i class="fa fa-check" (click)="doneTask(todo)"></i></button>
+    <button  class = "cancellation-button" [class.done]="todo.completed == 'done'"
+             [class.false]="todo.completed =='false'"
+             type ="submit"><i class="fa fa-times" (click)="cancTask(todo)" ></i></button>
+    <button  class = "del-button" [class.done]="todo.completed == 'done'"
+             [class.false]="todo.completed =='false'"
+             type ="submit"><i class="fa fa-trash" (click)="removeTask(todo.id)" ></i></button>
+  </div>
+</div>
+</div>

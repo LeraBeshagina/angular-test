@@ -1,0 +1,53 @@
+form {
+  min-height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #e5b89d, #badbec);
+  margin-bottom: 1rem;
+}
+
+form input, form button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: none;
+  background: white;
+}
+
+form button{
+  color:rgb(255, 255, 255);
+  background: #ee9f76;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover{
+  background: white;
+  color: #ee9f76;
+}
+select {
+  color: #ee9f76;
+  cursor: pointer;
+  padding: 0.85rem;
+  width: 10rem;
+  font-size: 1rem;
+  border:none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  color: white;
+  background-color: #ee9f76;
+}
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
+.input{
+  color: #575656;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 35rem;
+}

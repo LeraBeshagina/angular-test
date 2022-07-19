@@ -1,0 +1,193 @@
+
+
+h2 {
+  margin-bottom: .5rem;
+
+}
+.task {
+  padding: .5rem 1rem;
+  border: 1px dashed #ccc;
+  margin: 0.5rem;
+  background: white;
+  color: rgb(87, 86, 86);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+  max-width: 800px;
+}
+.done-button,
+.del-button,
+.cancellation-button{
+  background-color: white;
+  border: none;
+  padding: .5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  float: right;
+  margin: 0 1rem 0 0;
+}
+
+.done-button{
+  color: #badbec;
+}
+
+.cancellation-button{
+  color: #ee9f76;
+}
+
+.del-button{
+  color: #575656;
+}
+
+.taskButtons{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item,
+.priority-date{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.task.done,
+.inputTask.done,
+.del-button.done,
+.done-button.done,
+.cancellation-button.done{
+  background-color: #badbec;
+
+}
+
+.inputTask{
+  border: none;
+  color:#575656;
+  font-size: 1.5rem;
+}
+
+.cancellation-button.done{
+  color: #badbec;
+}
+
+.task.false,
+.inputTask.false,
+.del-button.false,
+.done-button.false,
+.cancellation-button.false{
+  background-color: #e5b89d;
+}
+
+
+.done-button.false,
+.cancellation-button.false{
+  color: #e5b89d;
+}
+
+
+
+select {
+  color: #ee9f76;
+  cursor: pointer;
+  padding: 0.85rem;
+  width: 10rem;
+  font-size: 1rem;
+  border:none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  color: white;
+  background-color: #ee9f76;
+}
+.sorted {
+  display: flex;
+  min-height: 5rem;
+  opacity: 0.9;
+  padding-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  background-color: #e5e3e3;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.filterPriorityAndDate {
+  color: #575656;
+}
+
+.filterPriorityAndDate:hover {
+  background-color: #575656;
+  color: white;
+}
+
+.sortBox1 {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+
+}
+.sortBox2 {
+  display: flex;
+  justify-content:center;
+  margin-bottom: 1rem;
+}
+
+.sortBox3{
+  display: flex;
+  justify-content:center;
+  margin-bottom: 1rem;
+}
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputSearch, .buttonSearch {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: none;
+  background: white;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.buttonSearch{
+  color: rgb(87, 86, 86);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.buttonSearch:hover{
+  color: rgb(255, 255, 255);
+  background: #575656;
+}
+
+.inputSearch{
+  color: #575656;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+}

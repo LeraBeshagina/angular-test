@@ -1,0 +1,19 @@
+<form>
+  <div class = "select">
+
+    <select name ="todos" class = "filter" [(ngModel)]="choice" >
+      <option value="Низкий">Низкий</option>
+      <option value="Средний">Средний</option>
+      <option value="Высокий">Высокий</option>
+    </select>
+  </div>
+
+  <input type="text"
+          [(ngModel)]='name' name="inputTask"
+         (keydown.enter)='name'
+         class = "input"
+         placeholder="Задача...">
+  <button class = "button" (click)="addTask()" type ="submit">
+    <i class="dob"><i class="fa fa-plus"></i></i>
+  </button>
+</form>
